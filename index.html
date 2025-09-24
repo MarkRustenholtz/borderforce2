@@ -181,6 +181,33 @@
   button.plusminus:hover { 
     background-color: #ddd; 
   }
+  /* Bouton moins en rouge */
+button.plusminus.minus {
+  background-color: #e74c3c;
+  color: white;
+}
+button.plusminus.minus:hover {
+  background-color: #c0392b;
+}
+
+/* Bouton plus en bleu */
+button.plusminus.plus {
+  background-color: #3498db;
+  color: white;
+}
+button.plusminus.plus:hover {
+  background-color: #2980b9;
+}
+
+/* Bouton ajouter en vert */
+button.add {
+  background-color: #27ae60;
+  color: white;
+}
+button.add:hover {
+  background-color: #229954;
+}
+
 
   button.red {
     background-color: #e74c3c; 
@@ -512,30 +539,30 @@
       <h3>Train</h3>
       <div class="flex-row" style="align-items:center;">
         <div>
-          <button class="plusminus" data-type="train" data-field="vehicles" data-action="minus">-</button>
+          <button class="plusminus minus" data-type="train" data-field="vehicles" data-action="minus">-</button>
           <span id="trainVehiclesCount">0</span> véhicules
-          <button class="plusminus" data-type="train" data-field="vehicles" data-action="plus">+</button>
+          <button class="plusminus plus" data-type="train" data-field="vehicles" data-action="plus">+</button>
         </div>
         <div style="margin-left:20px;">
-          <button class="plusminus" data-type="train" data-field="cv" data-action="minus">-</button>
+          <button class="plusminus minus" data-type="train" data-field="cv" data-action="minus">-</button>
           <span id="trainCvCount">0</span> CV
-          <button class="plusminus" data-type="train" data-field="cv" data-action="plus">+</button>
+          <button class="plusminus plus" data-type="train" data-field="cv" data-action="plus">+</button>
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CV manuellement:
-            <input type="number" id="trainCvManual" class="manual-input" min="0" value="0" />
-            <button id="trainCvAddManualBtn">Ajouter</button>
+            <input type="number" id="trainCvManual" class="manual-input" min="0" placeholder="0" />
+            <button id="trainCvAddManualBtn" class="add">Ajouter</button>
           </label>
         </div>
         <div style="margin-left:20px;">
-          <button class="plusminus" data-type="train" data-field="cf" data-action="minus">-</button>
+          <button class="plusminus minus" data-type="train" data-field="cf" data-action="minus">-</button>
           <span id="trainCfCount">0</span> CF
-          <button class="plusminus" data-type="train" data-field="cf" data-action="plus">+</button>
+          <button class="plusminus plus" data-type="train" data-field="cf" data-action="plus">+</button>
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CF manuellement:
-            <input type="number" id="trainCfManual" class="manual-input" min="0" value="0" />
-            <button id="trainCfAddManualBtn">Ajouter</button>
+            <input type="number" id="trainCfManual" class="manual-input" min="0" placeholder="0" />
+            <button id="trainCfAddManualBtn" class="add">Ajouter</button>
           </label>
         </div>
       </div>
@@ -545,30 +572,30 @@
       <h3>Bus</h3>
       <div class="flex-row" style="align-items:center;">
         <div>
-          <button class="plusminus" data-type="bus" data-field="vehicles" data-action="minus">-</button>
+          <button class="plusminus minus" data-type="bus" data-field="vehicles" data-action="minus">-</button>
           <span id="busVehiclesCount">0</span> véhicules
-          <button class="plusminus" data-type="bus" data-field="vehicles" data-action="plus">+</button>
+          <button class="plusminus plus" data-type="bus" data-field="vehicles" data-action="plus">+</button>
         </div>
         <div style="margin-left:20px;">
-          <button class="plusminus" data-type="bus" data-field="cv" data-action="minus">-</button>
+          <button class="plusminus minus" data-type="bus" data-field="cv" data-action="minus">-</button>
           <span id="busCvCount">0</span> CV
-          <button class="plusminus" data-type="bus" data-field="cv" data-action="plus">+</button>
+          <button class="plusminus plus" data-type="bus" data-field="cv" data-action="plus">+</button>
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CV manuellement:
-            <input type="number" id="busCvManual" class="manual-input" min="0" value="0" />
-            <button id="busCvAddManualBtn">Ajouter</button>
+            <input type="number" id="busCvManual" class="manual-input" min="0" placeholder="0" />
+            <button id="busCvAddManualBtn" class="add">Ajouter</button>
           </label>
         </div>
         <div style="margin-left:20px;">
-          <button class="plusminus" data-type="bus" data-field="cf" data-action="minus">-</button>
+          <button class="plusminus minus" data-type="bus" data-field="cf" data-action="minus">-</button>
           <span id="busCfCount">0</span> CF
-          <button class="plusminus" data-type="bus" data-field="cf" data-action="plus">+</button>
+          <button class="plusminus plus" data-type="bus" data-field="cf" data-action="plus">+</button>
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CF manuellement:
-            <input type="number" id="busCfManual" class="manual-input" min="0" value="0" />
-            <button id="busCfAddManualBtn">Ajouter</button>
+            <input type="number" id="busCfManual" class="manual-input" min="0" placeholder="0" />
+            <button id="busCfAddManualBtn"class="add">Ajouter</button>
           </label>
         </div>
       </div>
@@ -578,30 +605,30 @@
       <h3>VL</h3>
       <div class="flex-row" style="align-items:center;">
         <div>
-          <button class="plusminus" data-type="vl" data-field="vehicles" data-action="minus">-</button>
+          <button class="plusminus minus" data-type="vl" data-field="vehicles" data-action="minus">-</button>
           <span id="vlVehiclesCount">0</span> véhicules
-          <button class="plusminus" data-type="vl" data-field="vehicles" data-action="plus">+</button>
+          <button class="plusminus plus" data-type="vl" data-field="vehicles" data-action="plus">+</button>
         </div>
         <div style="margin-left:20px;">
-          <button class="plusminus" data-type="vl" data-field="cv" data-action="minus">-</button>
+          <button class="plusminus minus" data-type="vl" data-field="cv" data-action="minus">-</button>
           <span id="vlCvCount">0</span> CV
-          <button class="plusminus" data-type="vl" data-field="cv" data-action="plus">+</button>
+          <button class="plusminus plus" data-type="vl" data-field="cv" data-action="plus">+</button>
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CV manuellement:
-            <input type="number" id="vlCvManual" class="manual-input" min="0" value="0" />
-            <button id="vlCvAddManualBtn">Ajouter</button>
+            <input type="number" id="vlCvManual" class="manual-input" min="0" placeholder="0" />
+            <button id="vlCvAddManualBtn" class="add">Ajouter</button>
           </label>
         </div>
         <div style="margin-left:20px;">
-          <button class="plusminus" data-type="vl" data-field="cf" data-action="minus">-</button>
+          <button class="plusminus minus" data-type="vl" data-field="cf" data-action="minus">-</button>
           <span id="vlCfCount">0</span> CF
-          <button class="plusminus" data-type="vl" data-field="cf" data-action="plus">+</button>
+          <button class="plusminus plus" data-type="vl" data-field="cf" data-action="plus">+</button>
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CF manuellement:
-            <input type="number" id="vlCfManual" class="manual-input" min="0" value="0" />
-            <button id="vlCfAddManualBtn">Ajouter</button>
+            <input type="number" id="vlCfManual" class="manual-input" min="0" placeholder="0" />
+            <button id="vlCfAddManualBtn"class="add">Ajouter</button>
           </label>
         </div>
       </div>
@@ -611,30 +638,30 @@
       <h3>PL</h3>
       <div class="flex-row" style="align-items:center;">
         <div>
-          <button class="plusminus" data-type="pl" data-field="vehicles" data-action="minus">-</button>
+          <button class="plusminus minus" data-type="pl" data-field="vehicles" data-action="minus">-</button>
           <span id="plVehiclesCount">0</span> véhicules
-          <button class="plusminus" data-type="pl" data-field="vehicles" data-action="plus">+</button>
+          <button class="plusminus plus" data-type="pl" data-field="vehicles" data-action="plus">+</button>
         </div>
         <div style="margin-left:20px;">
-          <button class="plusminus" data-type="pl" data-field="cv" data-action="minus">-</button>
+          <button class="plusminus minus" data-type="pl" data-field="cv" data-action="minus">-</button>
           <span id="plCvCount">0</span> CV
-          <button class="plusminus" data-type="pl" data-field="cv" data-action="plus">+</button>
+          <button class="plusminus plus" data-type="pl" data-field="cv" data-action="plus">+</button>
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CV manuellement:
-            <input type="number" id="plCvManual" class="manual-input" min="0" value="0" />
-            <button id="plCvAddManualBtn">Ajouter</button>
+            <input type="number" id="plCvManual" class="manual-input" min="0" placeholder="0" />
+            <button id="plCvAddManualBtn"class="add">Ajouter</button>
           </label>
         </div>
         <div style="margin-left:20px;">
-          <button class="plusminus" data-type="pl" data-field="cf" data-action="minus">-</button>
+          <button class="plusminus minus" data-type="pl" data-field="cf" data-action="minus">-</button>
           <span id="plCfCount">0</span> CF
-          <button class="plusminus" data-type="pl" data-field="cf" data-action="plus">+</button>
+          <button class="plusminus plus" data-type="pl" data-field="cf" data-action="plus">+</button>
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CF manuellement:
-            <input type="number" id="plCfManual" class="manual-input" min="0" value="0" />
-            <button id="plCfAddManualBtn">Ajouter</button>
+            <input type="number" id="plCfManual" class="manual-input" min="0" placeholder="0" />
+            <button id="plCfAddManualBtn"class="add">Ajouter</button>
           </label>
         </div>
       </div>
