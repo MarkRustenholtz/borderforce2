@@ -13,7 +13,7 @@
 
 <style>
   body {
-    font-family: Arial, sans-serif;
+    font-family: verdana, sans-serif;
     margin: 0;
     padding: 10px;
     background: #fff;
@@ -32,13 +32,15 @@
   }
 
   .home-title {
-    color: white;
-    background-color: #003366;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    font-size: 1.5em;
-  }
+  color: white;
+  background-color: #003366;
+  padding: 20px;
+  margin: 0 -10px 30px -10px; /* enlève les marges du body */
+  border-radius: 0;            /* plus d’arrondi */
+  font-size: 1.5em;
+  text-align: center;
+}
+
 
   .home-title .sous-titre {
     font-size: 0.6em;
@@ -862,7 +864,7 @@
     </div>
 
     <h3>Compte rendu généré :</h3>
-    <textarea id="compteRendu" readonly rows="16" style="font-family:monospace; white-space:pre-wrap;"></textarea>
+    <textarea id="compteRendu" readonly style="font-family:Verdana; white-space:pre-wrap; overflow:hidden;"></textarea>
 
     <div style="margin-top:20px;">
       <h3>Résumé des ESR (scannés)</h3>
@@ -1425,8 +1427,13 @@
       else if(state.pulsar === 'non') cr += `\n6 - PULSAR non fait\n`;
       else cr += `\n6 - PULSAR (non renseigné)\n`;
 
-      document.getElementById('compteRendu').value = cr;
+      document.getElementById("compteRendu").value = cr;
+autoResize(document.getElementById("compteRendu"));
     }
+function autoResize(el) {
+  el.style.height = "auto"; // reset
+  el.style.height = (el.scrollHeight) + "px"; // adapte
+}
 
     // Copier
     function copyToClipboard() {
