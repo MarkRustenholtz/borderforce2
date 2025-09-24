@@ -41,7 +41,6 @@
   text-align: center;
 }
 
-
   .home-title .sous-titre {
     font-size: 0.6em;
     font-weight: normal;
@@ -297,6 +296,44 @@
       margin: -10px -10px 15px -10px;
     }
   }
+  
+/* Titres uniquement dans la page Fiche identité */
+#ficheIdentitePage h2 {
+  background-color: #003366 !important; /* bleu gendarmerie */
+  color: white !important;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+/* Boutons Supprimer en rouge */
+#ficheIdentitePage .red {
+  background-color: #e74c3c;
+  color: white;
+}
+#ficheIdentitePage .red:hover {
+  background-color: #c0392b;
+}
+
+/* Boutons Modifier en vert */
+#ficheIdentitePage .green {
+  background-color: #27ae60;
+  color: white;
+}
+#ficheIdentitePage .green:hover {
+  background-color: #229954;
+}
+/* Bouton bleu générique */
+#ficheIdentitePage .blue {
+  background-color: #3498db;
+  color: white;
+}
+#ficheIdentitePage .blue:hover {
+  background-color: #2980b9;
+}
+  
 </style>
 
 <script src="https://unpkg.com/html5-qrcode"></script>
@@ -801,12 +838,13 @@
     </div>
     <input type="text" id="autreTexte" placeholder="Précisez..." style="width:100%;margin-top:5px;padding:8px;" disabled>
 
-    <button type="submit">Enregistrer la fiche</button>
+    <button type="submit" class="blue">Enregistrer la fiche</button>
+
   </form>
 
   <h2>Historique des fiches</h2>
   <div id="historique"></div>
-  <button id="effacerFiches" class="btn-danger">Effacer toutes les fiches</button>
+  <button id="effacerFiches" class="red">Effacer toutes les fiches</button>
 </div>
 
   </div>
@@ -837,6 +875,7 @@
   </select><br>
 
   <p id="resultat"></p>
+  
   LIENS UTILES: <a href="https://www.visa-schengen.info/voyager-en-europe/pays-exemptes/" target="blank">Pays exemptés de visas</a>   
                 <a href="https://www.visa-schengen.info/voyager-en-europe/pays-concernes/" target="blank">Pays concernés</a>   
 				<a href="https://www.immigration.interieur.gouv.fr/fr/Immigration/Les-visas" target="blank">Les visas/immigration</a>   
@@ -1834,8 +1873,8 @@ Lieu: ${fiche.lieuInterpellation} | Suites données: ${fiche.suitesDonnees || ''
            Départ: ${fiche.villeDepart}, ${fiche.paysDepart} | Destination: ${fiche.villeDestination}, ${fiche.paysDestination}<br>
             Véhicule: ${fiche.vehicule} | Immatriculation: ${fiche.immatriculation}<br>
             Pièces d'identité: ${fiche.piecesIdentite.join(", ")}<br>
-            <button onclick="modifierFiche(${index})">Modifier</button>
-            <button onclick="supprimerFiche(${index})" class="btn-danger">Supprimer</button>
+            <button onclick="modifierFiche(${index})" class="green">Modifier</button>
+            <button onclick="supprimerFiche(${index})" class="red">Supprimer</button>
         `;
         historiqueDiv.appendChild(ficheDiv);
     });
