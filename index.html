@@ -15,7 +15,7 @@
   body {
     font-family: verdana, sans-serif;
     margin: 0;
-    padding: 10px;
+    padding: 0px;
     background: #f0f2f5;
     color: #222;
     min-height: 100vh;
@@ -50,14 +50,11 @@
 
   /* Nouvelle grille d'icônes */
   .app-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-    margin: 0 auto;
-    flex-grow: 1;
-    padding: 20px 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes fixes */
+  gap: 15px;
+  padding: 10px;
+
   }
 
   .icon-button {
