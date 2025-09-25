@@ -16,13 +16,13 @@
     font-family: verdana, sans-serif;
     margin: 0;
     padding: 10px;
-    background: #fff;
+    background: #f0f2f5;
     color: #222;
     min-height: 100vh;
     box-sizing: border-box;
   }
 
-  /* Page d'accueil */
+  /* Page d'accueil avec présentation en icônes */
   .home-page {
     display: flex;
     flex-direction: column;
@@ -32,14 +32,14 @@
   }
 
   .home-title {
-  color: white;
-  background-color: #003366;
-  padding: 20px;
-  margin: 0 -10px 30px -10px; /* enlève les marges du body */
-  border-radius: 0;            /* plus d’arrondi */
-  font-size: 1.5em;
-  text-align: center;
-}
+    color: white;
+    background-color: #003366;
+    padding: 20px;
+    margin: 0 -10px 30px -10px;
+    border-radius: 0;
+    font-size: 1.5em;
+    text-align: center;
+  }
 
   .home-title .sous-titre {
     font-size: 0.6em;
@@ -48,40 +48,71 @@
     margin-top: 8px;
   }
 
-  .home-menu {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+  /* Nouvelle grille d'icônes */
+  .app-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     width: 100%;
     margin: 0 auto;
     flex-grow: 1;
-    padding: 0 10px;
+    padding: 20px 10px;
   }
 
-  .home-menu button {
-    padding: 20px;
-    border: none;
-    border-radius: 12px;
-    font-size: 1.2em;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
+  .icon-button {
+    display: inline-flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    min-height: 80px;
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    font-family: inherit;
   }
 
-  .home-menu button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  .icon-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
   }
 
-  /* Pages individuelles */
+  .icon-button i {
+    font-size: 40px;
+    margin-bottom: 8px;
+    color: #0d6efd;
+  }
+
+  .icon-button span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+
+  /* Couleurs spécifiques pour chaque icône */
+  .icon-infos i { color: #3498db; }
+  .icon-esr i { color: #2ecc71; }
+  .icon-materiel i { color: #f39c12; }
+  .icon-compteurs i { color: #9b59b6; }
+  .icon-esi i { color: #e74c3c; }
+  .icon-passeur i { color: #16a085; }
+  .icon-obs i { color: #95a5a6; }
+  .icon-deroulement i { color: #d35400; }
+  .icon-pulsar i { color: #e67e22; }
+  .icon-cr i { color: #27ae60; }
+  .icon-fiche i { color: #e74c3c; }
+  .icon-visa i { color: #0055A4; }
+
+  /* Pages individuelles - styles inchangés */
   .page {
     display: none;
     min-height: 100vh;
+    background: #fff;
   }
 
   .page.active {
@@ -124,15 +155,13 @@
     flex-grow: 1;
   }
 
-  .btn-visa { background-color: #0055A4; color: white; } /* bleu France */
-
   .page-content {
     padding: 0 10px;
     max-width: 900px;
     margin: 0 auto;
   }
 
-  /* Styles généraux pour les formulaires */
+  /* Styles généraux pour les formulaires - inchangés */
   h2, h3 {
     text-align: center;
     color: #2c3e50;
@@ -181,33 +210,30 @@
   button.plusminus:hover { 
     background-color: #ddd; 
   }
-  /* Bouton moins en rouge */
-button.plusminus.minus {
-  background-color: #e74c3c;
-  color: white;
-}
-button.plusminus.minus:hover {
-  background-color: #c0392b;
-}
 
-/* Bouton plus en bleu */
-button.plusminus.plus {
-  background-color: #3498db;
-  color: white;
-}
-button.plusminus.plus:hover {
-  background-color: #2980b9;
-}
+  button.plusminus.minus {
+    background-color: #e74c3c;
+    color: white;
+  }
+  button.plusminus.minus:hover {
+    background-color: #c0392b;
+  }
 
-/* Bouton ajouter en vert */
-button.add {
-  background-color: #27ae60;
-  color: white;
-}
-button.add:hover {
-  background-color: #229954;
-}
+  button.plusminus.plus {
+    background-color: #3498db;
+    color: white;
+  }
+  button.plusminus.plus:hover {
+    background-color: #2980b9;
+  }
 
+  button.add {
+    background-color: #27ae60;
+    color: white;
+  }
+  button.add:hover {
+    background-color: #229954;
+  }
 
   button.red {
     background-color: #e74c3c; 
@@ -287,31 +313,34 @@ button.add:hover {
     margin-bottom: 15px;
   }
 
-  /* Couleurs des boutons d'accueil */
-  .btn-infos { background-color: #3498db; color: white; }
-  .btn-esr { background-color: #2ecc71; color: white; }
-  .btn-materiel { background-color: #f39c12; color: white; }
-  .btn-compteurs { background-color: #9b59b6; color: white; }
-  .btn-esi { background-color: #e74c3c; color: white; }
-  .btn-passeur { background-color: #16a085; color: white; }
-  .btn-obs { background-color: #95a5a6; color: white; }
-  .btn-deroulement { background-color: #d35400; color: white; }
-  .btn-pulsar { background-color: #e67e22; color: white; }
-  .btn-cr { background-color: #27ae60; color: white; }
-  .btn-external { background-color: #34495e; color: white; }
+  /* Responsive pour les icônes */
+  @media (max-width: 1024px) {
+    .icon-button {
+      width: 100px;
+      height: 100px;
+    }
+    .icon-button i {
+      font-size: 32px;
+    }
+  }
 
-  /* Responsive */
   @media (max-width: 768px) {
-    .home-menu {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      padding: 0 5px;
+    .app-grid {
+      gap: 15px;
+      padding: 15px 5px;
     }
     
-    .home-menu button {
-      padding: 15px 10px;
-      font-size: 1em;
-      min-height: 70px;
+    .icon-button {
+      width: 90px;
+      height: 90px;
+    }
+    
+    .icon-button i {
+      font-size: 28px;
+    }
+    
+    .icon-button span {
+      font-size: 12px;
     }
     
     .flex-row {
@@ -324,42 +353,39 @@ button.add:hover {
     }
   }
   
-/* Titres uniquement dans la page Fiche identité */
-#ficheIdentitePage h2 {
-  background-color: #003366 !important; /* bleu gendarmerie */
-  color: white !important;
-  padding: 8px 12px;
-  border-radius: 6px;
-  text-align: center;
-  margin-top: 20px;
-}
+  /* Titres uniquement dans la page Fiche identité */
+  #ficheIdentitePage h2 {
+    background-color: #003366 !important;
+    color: white !important;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 20px;
+  }
 
+  #ficheIdentitePage .red {
+    background-color: #e74c3c;
+    color: white;
+  }
+  #ficheIdentitePage .red:hover {
+    background-color: #c0392b;
+  }
 
-/* Boutons Supprimer en rouge */
-#ficheIdentitePage .red {
-  background-color: #e74c3c;
-  color: white;
-}
-#ficheIdentitePage .red:hover {
-  background-color: #c0392b;
-}
+  #ficheIdentitePage .green {
+    background-color: #27ae60;
+    color: white;
+  }
+  #ficheIdentitePage .green:hover {
+    background-color: #229954;
+  }
 
-/* Boutons Modifier en vert */
-#ficheIdentitePage .green {
-  background-color: #27ae60;
-  color: white;
-}
-#ficheIdentitePage .green:hover {
-  background-color: #229954;
-}
-/* Bouton bleu générique */
-#ficheIdentitePage .blue {
-  background-color: #3498db;
-  color: white;
-}
-#ficheIdentitePage .blue:hover {
-  background-color: #2980b9;
-}
+  #ficheIdentitePage .blue {
+    background-color: #3498db;
+    color: white;
+  }
+  #ficheIdentitePage .blue:hover {
+    background-color: #2980b9;
+  }
   
 </style>
 
@@ -367,57 +393,77 @@ button.add:hover {
 </head>
 <body>
 
-<!-- Page d'accueil -->
+<!-- Page d'accueil avec nouvelle présentation -->
 <div id="homePage" class="home-page">
   <h1 class="home-title">
     CR GENDARMERIE<br>
     <span class="sous-titre">LIMES Breil La Turbie DSI Tende</span>
   </h1>
 
-  <div class="home-menu">
-    <button class="btn-infos" onclick="showPage('infosPage')">
-      <i class="fas fa-calendar-alt"></i> Informations
+  <div class="app-grid">
+    <button class="icon-button icon-infos" onclick="showPage('infosPage')">
+      <i class="fas fa-calendar-alt"></i>
+      <span>Informations</span>
     </button>
-    <button class="btn-esr" onclick="showPage('esrPage')">
-      <i class="fas fa-user-shield"></i> ESR
+    
+    <button class="icon-button icon-esr" onclick="showPage('esrPage')">
+      <i class="fas fa-user-shield"></i>
+      <span>ESR</span>
     </button>
-    <button class="btn-materiel" onclick="showPage('materielPage')">
-      <i class="fas fa-video"></i> Matériel
+    
+    <button class="icon-button icon-materiel" onclick="showPage('materielPage')">
+      <i class="fas fa-video"></i>
+      <span>Matériel</span>
     </button>
-    <button class="btn-compteurs" onclick="showPage('vehiculesPage')">
-      <i class="fas fa-chart-bar"></i> Compteurs
+    
+    <button class="icon-button icon-compteurs" onclick="showPage('vehiculesPage')">
+      <i class="fas fa-chart-bar"></i>
+      <span>Compteurs</span>
     </button>
-    <button class="btn-esi" onclick="showPage('esiPage')">
-      <i class="fas fa-passport"></i> ESI
+    
+    <button class="icon-button icon-esi" onclick="showPage('esiPage')">
+      <i class="fas fa-passport"></i>
+      <span>ESI</span>
     </button>
-    <button class="btn-passeur" onclick="showPage('passeurPage')">
-      <i class="fas fa-user-secret"></i> Passeurs
+    
+    <button class="icon-button icon-passeur" onclick="showPage('passeurPage')">
+      <i class="fas fa-user-secret"></i>
+      <span>Passeurs</span>
     </button>
-    <button class="btn-obs" onclick="showPage('observationsPage')">
-      <i class="fas fa-eye"></i> Observations
+    
+    <button class="icon-button icon-obs" onclick="showPage('observationsPage')">
+      <i class="fas fa-eye"></i>
+      <span>Observations</span>
     </button>
-    <button class="btn-deroulement" onclick="showPage('deroulementPage')">
-      <i class="fas fa-tasks"></i> Déroulement
+    
+    <button class="icon-button icon-deroulement" onclick="showPage('deroulementPage')">
+      <i class="fas fa-tasks"></i>
+      <span>Déroulement</span>
     </button>
-    <button class="btn-pulsar" onclick="showPage('pulsarPage')">
-      <i class="fas fa-fire"></i> Pulsar
+    
+    <button class="icon-button icon-pulsar" onclick="showPage('pulsarPage')">
+      <i class="fas fa-fire"></i>
+      <span>Pulsar</span>
     </button>
-    <button class="btn-cr" onclick="showPage('generatePage')">
-      <i class="fas fa-file-alt"></i> Compte Rendu
+    
+    <button class="icon-button icon-cr" onclick="showPage('generatePage')">
+      <i class="fas fa-file-alt"></i>
+      <span>Compte Rendu</span>
     </button>
-    <!-- Fiche identité (ouvre la page intégrée que l'on va ajouter) -->
-<button class="btn-esi" onclick="showPage('ficheIdentitePage')">
-  <i class="fas fa-id-card"></i> Fiche identité
-</button>
+    
+    <button class="icon-button icon-fiche" onclick="showPage('ficheIdentitePage')">
+      <i class="fas fa-id-card"></i>
+      <span>Fiche identité</span>
+    </button>
 
-<!-- Assistant Visas (ouvre la page intégrée que l'on va ajouter) -->
-<button class="btn-visa" onclick="showPage('assistantVisaPage')">
-  <i class="fas fa-passport"></i> Assistant Visas
-</button>
-
+    <button class="icon-button icon-visa" onclick="showPage('assistantVisaPage')">
+      <i class="fas fa-passport"></i>
+      <span>Assistant Visas</span>
+    </button>
   </div>
 </div>
 
+<!-- Toutes les autres pages restent identiques à votre version originale -->
 <!-- Page Informations -->
 <div id="infosPage" class="page">
   <div class="page-header">
@@ -450,7 +496,6 @@ button.add:hover {
     </div>
   </div>
 </div>
-
 <!-- Page ESR -->
 <div id="esrPage" class="page">
   <div class="page-header">
@@ -903,11 +948,11 @@ button.add:hover {
 
   <p id="resultat"></p>
   
-  LIENS UTILES: <a href="https://www.visa-schengen.info/voyager-en-europe/pays-exemptes/" target="blank">Pays exemptés de visas</a>   
-                <a href="https://www.visa-schengen.info/voyager-en-europe/pays-concernes/" target="blank">Pays concernés</a>   
+  
+  <p>LIENS UTILES:</p> <a href="https://www.visa-schengen.info/voyager-en-europe/pays-exemptes/" target="blank">Pays exemptés de visas</a><br><br>
+                <a href="https://www.visa-schengen.info/voyager-en-europe/pays-concernes/" target="blank">Pays concernés</a><br><br>
 				<a href="https://www.immigration.interieur.gouv.fr/fr/Immigration/Les-visas" target="blank">Les visas/immigration</a>   
-				
-				
+							
 </div>
 
   </div>
@@ -950,9 +995,9 @@ button.add:hover {
   </div>
 </div>
 
-<!-- Script principal -->
+
 <script>
-  // Navigation entre les pages
+// Navigation entre les pages
   function showPage(pageId) {
     // Cacher toutes les pages
     document.querySelectorAll('.page, .home-page').forEach(page => {
