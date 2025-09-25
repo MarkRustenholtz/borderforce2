@@ -51,14 +51,10 @@
   /* Nouvelle grille d'icônes */
    .app-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes fixes */
   gap: 15px;
-  padding: 10px 0;   /* pas de padding gauche/droite */
-  max-width: 380px;  /* largeur fixe pour 3 boutons de ~120px */
-  margin: 0 auto;    /* centre la grille */
+  padding: 10px;
 }
-
-
   .icon-button {
     display: inline-flex;
     flex-direction: column;
