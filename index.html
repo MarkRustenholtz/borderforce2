@@ -34,7 +34,7 @@
   .home-title {
     color: white;
     background-color: #003366;
-    padding: 10px;
+    padding: 20px;
     margin: 0 -10px 20px -10px;
     border-radius: 0;
     font-size: 1.5em;
@@ -53,11 +53,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    width: 100%;
-    margin: 0 auto;
-    flex-grow: 1;
-    padding: 20px 10px;
   }
 
   .icon-button {
@@ -325,18 +320,11 @@
   }
 
   @media (max-width: 768px) {
-    .app-grid {
-    display: grid;                       /* on passe en mode grille */
-    grid-template-columns: repeat(3, 1fr); 
-      gap: 8px;
-      padding: 5px;
-    }
-    
     .icon-button {
       width: 90px;
       height: 90px;
+      margin: 10px;
     }
-    
     .icon-button i {
       font-size: 28px;
     }
