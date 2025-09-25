@@ -49,11 +49,16 @@
   }
 
   /* Nouvelle grille d'icônes */
-   .app-grid {
+  .app-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colonnes fixes */
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
   gap: 15px;
   padding: 10px;
+  width: 100%;
+  max-width: 400px;   /* limite la largeur totale pour rester centré */
+  margin: 0 auto;     /* centre la grille */
+  justify-content: center;
+  align-content: center;
 }
   .icon-button {
     display: inline-flex;
