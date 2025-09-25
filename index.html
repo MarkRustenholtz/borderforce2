@@ -15,7 +15,7 @@
   body {
     font-family: verdana, sans-serif;
     margin: 0;
-    padding: 0px;
+    padding: 10px;
     background: #f0f2f5;
     color: #222;
     min-height: 100vh;
@@ -34,8 +34,8 @@
   .home-title {
     color: white;
     background-color: #003366;
-    padding: 30px;
-    margin: 0 -10px 20px -10px;
+    padding: 20px;
+    margin: 0 -10px 30px -10px;
     border-radius: 0;
     font-size: 1.5em;
     text-align: center;
@@ -48,11 +48,16 @@
     margin-top: 8px;
   }
 
-   /* Nouvelle grille d'icônes */
+  /* Nouvelle grille d'icônes */
   .app-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+    flex-grow: 1;
+    padding: 20px 10px;
   }
 
   .icon-button {
@@ -102,7 +107,7 @@
   .icon-cr i { color: #27ae60; }
   .icon-fiche i { color: #e74c3c; }
   .icon-visa i { color: #0055A4; }
-
+  .icon-qr i { color: #8e44ad; }
   /* Pages individuelles - styles inchangés */
   .page {
     display: none;
@@ -319,12 +324,14 @@
     }
   }
 
-  @media (max-width: 768px) {
+   @media (max-width: 768px) {
     .icon-button {
       width: 90px;
       height: 90px;
       margin: 10px;
+    
     }
+    
     .icon-button i {
       font-size: 28px;
     }
@@ -450,10 +457,16 @@
       <i class="fas fa-passport"></i>
       <span>Assistant Visas</span>
     </button>
+	<button id="scanQrBtn" class="icon-button icon-qr" onclick="showPage('qrPage')">
+  <i class="fas fa-qrcode"></i>
+  <span>QR Code</span>
+</button>
+
+
   </div>
 </div>
 
-<!-- Toutes les autres pages restent identiques à votre version originale -->
+
 <!-- Page Informations -->
 <div id="infosPage" class="page">
   <div class="page-header">
@@ -960,20 +973,33 @@
     <div style="text-align:center; margin-bottom: 20px;">
       <button id="generateBtn" class="blue" style="padding:12px 24px; font-size:1.1em;">Générer compte rendu</button>
       <button id="copyBtn" class="green" style="padding:12px 24px; font-size:1.1em;">Copier dans le presse-papiers</button>
-      <button id="scanQrBtn" style="background-color:#8e44ad; color:white; font-weight:bold; padding:12px 24px; font-size:1.1em;">Scanner QR code</button>
       <button id="resetBtn" class="red" style="font-size:1.1em;">Effacer les données sauvegardées</button>
     </div>
 
     <h3>Compte rendu généré :</h3>
     <textarea id="compteRendu" readonly style="font-family:Verdana; white-space:pre-wrap; overflow:hidden;"></textarea>
 
-    <div style="margin-top:20px;">
-      <h3>Résumé des ESR (scannés)</h3>
-      <textarea id="resumeEsr" readonly rows="6" style="font-family:monospace; white-space:pre-wrap;"></textarea>
-      <div class="small-note">Scannés: <span id="nbScans">0</span> | NIGEND: <span id="nigendList">—</span></div>
+    
+  </div>
+</div>
+<!-- Page QR Code -->
+<div id="qrPage" class="page">
+  <div class="page-header">
+    <button class="back-button" onclick="showPage('homePage')">
+      <i class="fas fa-arrow-left"></i> Retour
+    </button>
+    <div class="page-title">QR Codes scannés</div>
+  </div>
+
+  <div class="page-content">
+    <h3>Résumé des ESR (scannés)</h3>
+    <textarea id="resumeEsr" readonly rows="6" style="font-family:Verdana; white-space:pre-wrap; overflow:hidden;"></textarea>
+    <div class="small-note">
+      Scannés: <span id="nbScans">0</span> | NIGEND: <span id="nigendList">—</span>
     </div>
   </div>
 </div>
+
 
 <!-- QR Modal -->
 <div id="qrModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center;">
