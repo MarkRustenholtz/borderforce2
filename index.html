@@ -324,13 +324,17 @@
     }
   }
 
-   @media (max-width: 768px) {
-    .icon-button {
-      width: 90px;
-      height: 90px;
-      margin: 10px;
-    
-    }
+  @media (max-width: 768px) {
+  .app-grid {
+    grid-template-columns: repeat(3, 1fr); /* toujours 3 colonnes */
+    gap: 8px;
+    padding: 5px;
+  }
+
+  .icon-button {
+    width: 100%;   /* bouton prend la largeur de sa cellule */
+    height: 90px;  /* réduit en hauteur */
+  }
     
     .icon-button i {
       font-size: 28px;
@@ -339,7 +343,7 @@
     .icon-button span {
       font-size: 12px;
     }
-    
+  }
     .flex-row {
       flex-direction: column;
       align-items: stretch;
