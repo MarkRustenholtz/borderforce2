@@ -1124,6 +1124,24 @@
       } else if(state.pulsar === 'non') {
         document.getElementById('pulsarNon').checked = true;
       }
+	    // Mise à jour du résumé des ESR scannés (QR Page)
+  const resumeEl = document.getElementById('resumeEsr');
+  if (resumeEl) {
+    resumeEl.value = state.resumeEsr || '';
+  }
+
+  const nbScansEl = document.getElementById('nbScans');
+  if (nbScansEl) {
+    nbScansEl.textContent = state.scannedNigends ? state.scannedNigends.length : 0;
+  }
+
+  const nigendListEl = document.getElementById('nigendList');
+  if (nigendListEl) {
+    nigendListEl.textContent = state.scannedNigends && state.scannedNigends.length > 0
+      ? state.scannedNigends.join(', ')
+      : '—';
+  }
+
     }
 
     // ESR functions
