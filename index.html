@@ -1020,7 +1020,19 @@
       targetPage.style.display = pageId === 'homePage' ? 'flex' : 'block';
       targetPage.classList.add('active');
     }
-    
+    // Redimensionner le textarea QR quand on affiche cette page
+  if (pageId === 'qrPage') {
+    // Attendre que la page soit complètement affichée
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const resumeEl = document.getElementById('resumeEsr');
+        if (resumeEl && resumeEl.value) {
+          resumeEl.style.height = 'auto';
+          resumeEl.style.height = resumeEl.scrollHeight + 'px';
+        }
+      });
+    });
+  }
     // Scroll vers le haut
     window.scrollTo(0, 0);
   }
@@ -1126,9 +1138,9 @@
       }
 	    // Mise à jour du résumé des ESR scannés (QR Page)
   const resumeEl = document.getElementById('resumeEsr');
-  if (resumeEl) {
-    resumeEl.value = state.resumeEsr || '';
-  }
+if (resumeEl) {
+  resumeEl.value = state.resumeEsr || '';
+}
 
   const nbScansEl = document.getElementById('nbScans');
   if (nbScansEl) {
@@ -1766,10 +1778,14 @@ Pl: ${counts.pl.v} / ${counts.pl.cv} CV / ${counts.pl.cf} CF`;
     }
 
     function updateResumeEsrUI(){
-      document.getElementById('resumeEsr').value=state.resumeEsr || '';
-      document.getElementById('nbScans').textContent=(state.scannedNigends||[]).length;
-      document.getElementById('nigendList').textContent=(state.scannedNigends||[]).join(', ')||'—';
-    }
+  const resumeEl = document.getElementById('resumeEsr');
+  if (resumeEl) {
+    resumeEl.value = state.resumeEsr || ''; 
+	autoResize(resumeEl);// Auto-redimensionnement du textarea
+  }
+  document.getElementById('nbScans').textContent = (state.scannedNigends||[]).length;
+  document.getElementById('nigendList').textContent = (state.scannedNigends||[]).join(', ')||'—';
+}
 
     // patch generate to include scans
     const oldGenerate = generateCompteRendu;
