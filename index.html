@@ -591,7 +591,7 @@
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CV manuellement:
-            <input type="number" id="trainCvManual" class="manual-input" min="0" placeholder="0" />
+            <input type="number" id="trainCvManual" class="manual-input" min="0" placeholder="0" inputmode="numeric" pattern="[0-9]*">
             <button id="trainCvAddManualBtn" class="add">Ajouter</button>
           </label>
         </div>
@@ -602,7 +602,7 @@
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CF manuellement:
-            <input type="number" id="trainCfManual" class="manual-input" min="0" placeholder="0" />
+            <input type="number" id="trainCfManual" class="manual-input" min="0" placeholder="0" inputmode="numeric" pattern="[0-9]*">
             <button id="trainCfAddManualBtn" class="add">Ajouter</button>
           </label>
         </div>
@@ -624,7 +624,7 @@
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CV manuellement:
-            <input type="number" id="busCvManual" class="manual-input" min="0" placeholder="0" />
+            <input type="number" id="busCvManual" class="manual-input" min="0" placeholder="0" inputmode="numeric" pattern="[0-9]*">
             <button id="busCvAddManualBtn" class="add">Ajouter</button>
           </label>
         </div>
@@ -635,8 +635,8 @@
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CF manuellement:
-            <input type="number" id="busCfManual" class="manual-input" min="0" placeholder="0" />
-            <button id="busCfAddManualBtn"class="add">Ajouter</button>
+            <input type="number" id="busCfManual" class="manual-input" min="0" placeholder="0" inputmode="numeric" pattern="[0-9]*">
+            <button id="busCfAddManualBtn" class="add">Ajouter</button>
           </label>
         </div>
       </div>
@@ -657,7 +657,7 @@
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CV manuellement:
-            <input type="number" id="vlCvManual" class="manual-input" min="0" placeholder="0" />
+            <input type="number" id="vlCvManual" class="manual-input" min="0" placeholder="0" inputmode="numeric" pattern="[0-9]*">
             <button id="vlCvAddManualBtn" class="add">Ajouter</button>
           </label>
         </div>
@@ -668,8 +668,8 @@
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CF manuellement:
-            <input type="number" id="vlCfManual" class="manual-input" min="0" placeholder="0" />
-            <button id="vlCfAddManualBtn"class="add">Ajouter</button>
+            <input type="number" id="vlCfManual" class="manual-input" min="0" placeholder="0" inputmode="numeric" pattern="[0-9]*">
+            <button id="vlCfAddManualBtn" class="add">Ajouter</button>
           </label>
         </div>
       </div>
@@ -690,8 +690,8 @@
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CV manuellement:
-            <input type="number" id="plCvManual" class="manual-input" min="0" placeholder="0" />
-            <button id="plCvAddManualBtn"class="add">Ajouter</button>
+            <input type="number" id="plCvManual" class="manual-input" min="0" placeholder="0" inputmode="numeric" pattern="[0-9]*">
+            <button id="plCvAddManualBtn" class="add">Ajouter</button>
           </label>
         </div>
         <div style="margin-left:20px;">
@@ -701,8 +701,8 @@
         </div>
         <div>
           <label style="margin-left:15px;">Ajouter CF manuellement:
-            <input type="number" id="plCfManual" class="manual-input" min="0" placeholder="0" />
-            <button id="plCfAddManualBtn"class="add">Ajouter</button>
+            <input type="number" id="plCfManual" class="manual-input" min="0" placeholder="0" inputmode="numeric" pattern="[0-9]*">
+            <button id="plCfAddManualBtn" class="add">Ajouter</button>
           </label>
         </div>
       </div>
@@ -1280,25 +1280,52 @@
       debounceSave();
     }
     
-    function addManualCv(type) {
-      const input = document.getElementById(type+'CvManual');
-      const val = parseInt(input.value);
-      if(isNaN(val) || val < 1) { alert('Veuillez saisir un nombre entier supérieur à 0.'); return; }
-      state.cv[type] += val;
-      input.value = 0;
-      updateUI();
-      debounceSave();
+      // CV
+function addManualCv(type){
+  const input = document.getElementById(type+'CvManual');
+  if(!input) return;
+  const val = parseInt(input.value, 10);
+  if (!(val > 0)) { alert('Veuillez saisir un nombre entier > 0.'); input.focus(); input.select(); return; }
+  state.cv[type] += val;
+  updateUI(); debounceSave();
+  input.value = '';          // ← vide
+  input.placeholder = '0';   // ← indicatif
+  input.blur();              // (optionnel)
+}
+
+// CF
+function addManualCf(type){
+  const input = document.getElementById(type+'CfManual');
+  if(!input) return;
+  const val = parseInt(input.value, 10);
+  if (!(val > 0)) { alert('Veuillez saisir un nombre entier > 0.'); input.focus(); input.select(); return; }
+  state.cf[type] += val;
+  updateUI(); debounceSave();
+  input.value = '';
+  input.placeholder = '0';
+  input.blur();
+}
+['train','bus','vl','pl'].forEach(t=>{
+  ['Cv','Cf'].forEach(kind=>{
+    const inp = document.getElementById(`${t}${kind}Manual`);
+    if(!inp) return;
+
+    // Efface 0 au focus et sélectionne la valeur existante
+    inp.addEventListener('focus', () => {
+      if (inp.value === '0') inp.value = '';
+      if (inp.value) inp.select();
+    });
+
+    // Entrée = clic sur "Ajouter"
+    const btn = document.getElementById(`${t}${kind}AddManualBtn`);
+    if(btn){
+      inp.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter') btn.click();
+      });
     }
-    
-    function addManualCf(type) {
-      const input = document.getElementById(type+'CfManual');
-      const val = parseInt(input.value);
-      if(isNaN(val) || val < 1) { alert('Veuillez saisir un nombre entier supérieur à 0.'); return; }
-      state.cf[type] += val;
-      input.value = 0;
-      updateUI();
-      debounceSave();
-    }
+  });
+});
+
 
     // ESI
     function renderEsiList() {
