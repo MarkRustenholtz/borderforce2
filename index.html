@@ -402,7 +402,24 @@
   #ficheIdentitePage .blue:hover {
     background-color: #2980b9;
   }
-  
+  /* Mise en forme spécifique à la page Informations */
+#infosPage .flex-col {
+  display: flex;
+  flex-direction: row;      /* label + input sur une seule ligne */
+  align-items: center;
+  gap: 8px;                 /* espace entre le label et l’input */
+  margin-bottom: 12px;
+}
+
+#infosPage .flex-col label {
+  min-width: 100px;         /* largeur fixe pour aligner les colonnes */
+  margin: 0;
+}
+
+#infosPage .flex-col input {
+  flex: 1;                  /* le champ s’adapte à la largeur dispo */
+  max-width: 200px;         /* optionnel, pour éviter trop large */
+}
 </style>
 
 <script src="https://unpkg.com/html5-qrcode"></script>
