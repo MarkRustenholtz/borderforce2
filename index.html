@@ -32,16 +32,20 @@
 }
 
 /* Bandeau titre */
-.home-title {
-  color: white;
-  background-color: #003366;
+.home-page .home-title {
+  margin: 0 0 30px 0;
   padding: 20px;
-  margin: 0 0 30px 0; /* plus de décalage latéral */
+  background: #003366;
+  color: white;
   font-size: 1.5em;
   text-align: center;
+
+  /* on annule le padding de la page */
+  width: calc(100% + 40px);
+  margin-left: -20px;
 }
 
-.home-title .sous-titre {
+.home-page .home-title .sous-titre {
   font-size: 0.6em;
   font-weight: normal;
   display: block;
@@ -439,12 +443,12 @@
 <body>
 
 <!-- Page d'accueil avec nouvelle présentation -->
-
+<div id="homePage" class="home-page">
   <h1 class="home-title">
     CR GENDARMERIE<br>
     <span class="sous-titre">LIMES Breil La Turbie DSI Tende</span>
   </h1>
-<div id="homePage" class="home-page">
+
   <div class="app-grid">
     <button class="icon-button icon-infos" onclick="showPage('infosPage')">
       <i class="fas fa-calendar-alt"></i>
