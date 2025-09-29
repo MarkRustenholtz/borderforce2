@@ -367,6 +367,18 @@
   display: block;
   margin-top: 8px;
 }
+
+/* Empêche tout scroll horizontal */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Corrige les pages internes qui ont des marges négatives */
+.page {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 </style>
 
 <script src="https://unpkg.com/html5-qrcode"></script>
