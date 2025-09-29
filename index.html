@@ -13,49 +13,48 @@
 
 <style>
   body {
-    font-family: verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f0f2f5;
-    color: #222;
-    min-height: 100vh;
-    box-sizing: border-box;
-  }
+  font-family: verdana, sans-serif;
+  margin: 0;
+  padding: 0; /* on enlève tout le padding */
+  background: #f0f2f5;
+  color: #222;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
 
-  /* Page d'accueil avec présentation en icônes */
-  .home-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    text-align: center;
-    padding: 20px;
-  }
-  .home-title {
+/* Page d'accueil */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Bandeau titre */
+.home-title {
   color: white;
   background-color: #003366;
   padding: 20px;
-  margin: 0 0 30px 0;
-  width: calc(100% + 20px);
-  transform: translateX(-10px);
+  margin: 0 0 30px 0; /* plus de décalage latéral */
   font-size: 1.5em;
   text-align: center;
 }
 
-  .home-title .sous-titre {
-    font-size: 0.6em;
-    font-weight: normal;
-    display: block;
-    margin-top: 8px;
-  }
+.home-title .sous-titre {
+  font-size: 0.6em;
+  font-weight: normal;
+  display: block;
+  margin-top: 8px;
+}
 
-  /* Nouvelle grille d'icônes */
-  .app-grid {
+/* Grille icônes */
+.app-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colonnes fixes */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 15px;
   padding: 10px;
 }
-
 
   .icon-button {
     display: inline-flex;
