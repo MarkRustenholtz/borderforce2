@@ -290,6 +290,27 @@
   margin: 0 10px;
 } 
 
+.flex-row {
+  display: flex;
+  flex-direction: column;   /* empile les lignes */
+  align-items: center;      /* centre les compteurs */
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.flex-row > div {
+  display: flex;
+  justify-content: center;  /* centre horizontalement le contenu */
+  align-items: center;
+  gap: 8px;
+}
+
+/* Sauf pour les labels "Ajouter manuellement" -> alignés à gauche */
+.flex-row > div label {
+  justify-content: flex-start;
+  text-align: left;
+  width: 100%;  /* prend toute la largeur de la carte */
+}
   .manual-input {
     width: 80px;
     font-size: 1em;
