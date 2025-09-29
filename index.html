@@ -339,6 +339,34 @@
     font-size: 0.95em;
     box-sizing: border-box;
   }
+#homePage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Bandeau accueil */
+#homePage .home-title {
+  background: #003366;
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  padding: 20px;
+  margin-top: -20px;   /* enlève le padding haut */
+  margin-left: -20px;  /* enlève le padding gauche */
+  margin-right: -20px; /* enlève le padding droit */
+  margin-bottom: 30px; /* espace sous le bandeau */
+}
+
+#homePage .home-title .sous-titre {
+  font-size: 0.6em;
+  font-weight: normal;
+  display: block;
+  margin-top: 8px;
+}
 </style>
 
 <script src="https://unpkg.com/html5-qrcode"></script>
