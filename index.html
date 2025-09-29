@@ -439,20 +439,19 @@
 }
 /* Resserrement vertical des champs dans la page Informations */
 #infosPage .flex-col {
-  margin-bottom: 8px; /* réduit l’espace entre les lignes */
+  margin-bottom: 4px !important; /* réduit fortement l’espace */
 }
 
 #infosPage label {
-  margin: 2px 0 2px 0; /* réduit l’écart autour des labels */
-  font-size: 0.95em;   /* texte un peu plus compact */
+  margin: 0 0 2px 0 !important;  /* colle le label au champ */
+  font-size: 0.9em;               /* texte un peu plus petit */
 }
 
 #infosPage input,
 #infosPage select {
-  padding: 6px 8px;   /* un peu moins de hauteur interne */
-  margin-bottom: 6px; /* espace plus serré sous chaque champ */
+  padding: 5px 8px !important;   /* réduit la hauteur des champs */
+  margin-bottom: 4px !important; /* colle plus les champs */
 }
-
 #homePage .home-title {
   margin: -20px -20px 30px -20px; /* colle en haut et annule le padding de homePage */
   padding: 20px;
