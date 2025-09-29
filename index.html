@@ -14,52 +14,48 @@
 
 <style>
   body {
-  font-family: verdana, sans-serif;
-  margin: 0;
-  padding: 0; /* on enlève tout le padding */
-  background: #f0f2f5;
-  color: #222;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
+    font-family: verdana, sans-serif;
+    margin: 0;
+    padding: 0; /* on enlève tout le padding */
+    background: #f0f2f5;
+    color: #222;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
 
-/* Page d'accueil */
-.home-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  text-align: center;
-  padding: 20px;
-}
+  /* Page d'accueil */
+  .home-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+  }
 
-/* Bandeau titre */
-.home-page .home-title {
-  margin: 0 0 30px 0;
-  padding: 20px;
-  background: #003366;
-  color: white;
-  font-size: 1.5em;
-  text-align: center;
+  /* Bandeau titre propre (uniquement accueil) */
+  #homePage .home-title {
+    background: #003366;
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 20px;
+    margin: 0 0 30px 0; /* colle bien en haut, espace dessous */
+  }
 
-  /* on annule le padding de la page */
-  width: calc(100% + 40px);
-  margin-left: -20px;
-}
+  #homePage .home-title .sous-titre {
+    font-size: 0.6em;
+    font-weight: normal;
+    display: block;
+    margin-top: 8px;
+  }
 
-.home-page .home-title .sous-titre {
-  font-size: 0.6em;
-  font-weight: normal;
-  display: block;
-  margin-top: 8px;
-}
-
-/* Grille icônes */
-.app-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 15px;
-  padding: 10px;
-}
+  /* Grille icônes */
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px;
+    padding: 10px;
+  }
 
   .icon-button {
     display: inline-flex;
@@ -109,7 +105,8 @@
   .icon-fiche i { color: #e74c3c; }
   .icon-visa i { color: #0055A4; }
   .icon-qr i { color: #8e44ad; }
-  /* Pages individuelles - styles inchangés */
+
+  /* Pages individuelles */
   .page {
     display: none;
     min-height: 100vh;
@@ -162,7 +159,7 @@
     margin: 0 auto;
   }
 
-  /* Styles généraux pour les formulaires - inchangés */
+  /* Styles formulaires */
   h2, h3 {
     text-align: center;
     color: #2c3e50;
@@ -208,73 +205,21 @@
     background-color: #f0f0f0;
   }
 
-  button.plusminus:hover { 
-    background-color: #ddd; 
-  }
+  button.plusminus:hover { background-color: #ddd; }
+  button.plusminus.minus { background-color: #e74c3c; color: white; }
+  button.plusminus.minus:hover { background-color: #c0392b; }
+  button.plusminus.plus { background-color: #3498db; color: white; }
+  button.plusminus.plus:hover { background-color: #2980b9; }
+  button.add { background-color: #27ae60; color: white; }
+  button.add:hover { background-color: #229954; }
+  button.red { background-color: #e74c3c; color: white; }
+  button.red:hover { background-color: #c0392b; }
+  button.blue { background-color: #3498db; color: white; }
+  button.blue:hover { background-color: #2980b9; }
+  button.green { background-color: #27ae60; color: white; }
+  button.green:hover { background-color: #229954; }
 
-  button.plusminus.minus {
-    background-color: #e74c3c;
-    color: white;
-  }
-  button.plusminus.minus:hover {
-    background-color: #c0392b;
-  }
-
-  button.plusminus.plus {
-    background-color: #3498db;
-    color: white;
-  }
-  button.plusminus.plus:hover {
-    background-color: #2980b9;
-  }
-
-  button.add {
-    background-color: #27ae60;
-    color: white;
-  }
-  button.add:hover {
-    background-color: #229954;
-  }
-
-  button.red {
-    background-color: #e74c3c; 
-    color: white; 
-  }
-
-  button.red:hover { 
-    background-color: #c0392b; 
-  }
-
-  button.blue {
-    background-color: #3498db; 
-    color: white; 
-  }
-
-  button.blue:hover { 
-    background-color: #2980b9; 
-  }
-
-  button.green {
-    background-color: #27ae60; 
-    color: white; 
-  }
-
-  button.green:hover { 
-    background-color: #229954; 
-  }
-
-  /*.flex-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 15px;
-  }*/
-
-  .flex-col {
-    flex: 1 1 200px;
-    min-width: 200px;
-  }
+  .flex-col { flex: 1 1 200px; min-width: 200px; }
 
   .vehicle-card {
     border: 2px solid #3498db;
@@ -288,38 +233,35 @@
     margin-top: 0;
     color: #2c3e50;
   }
+
   span[id$="Count"] {
-  font-size: 1.2em;
-  font-weight: bold;
-  margin: 0 10px;
-} 
-
-.flex-row {
-  display: flex;
-  flex-direction: column;   /* empile les lignes */
-  align-items: center;      /* centre les compteurs */
-  gap: 12px;
-  margin-bottom: 15px;
-}
-
-.flex-row > div {
-  display: flex;
-  justify-content: center;  /* centre horizontalement le contenu */
-  align-items: center;
-  gap: 8px;
-}
-
-/* Sauf pour les labels "Ajouter manuellement" -> alignés à gauche */
-.flex-row > div label {
-  justify-content: flex-start;
-  text-align: left;
-  width: 100%;  /* prend toute la largeur de la carte */
-}
-  .manual-input {
-    width: 80px;
-    font-size: 1em;
-    padding: 4px 6px;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 10px;
   }
+
+  .flex-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+
+  .flex-row > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .flex-row > div label {
+    justify-content: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+
+  .manual-input { width: 80px; font-size: 1em; padding: 4px 6px; }
 
   textarea {
     width: 100%;
@@ -333,47 +275,22 @@
     resize: vertical;
   }
 
-  .small-note {
-    font-size: 0.85em;
-    color: #666;
-    margin-top: 5px;
-    margin-bottom: 15px;
-  }
+  .small-note { font-size: 0.85em; color: #666; margin-top: 5px; margin-bottom: 15px; }
 
-  /* Responsive pour les icônes */
+  /* Responsive */
   @media (max-width: 1024px) {
-    .icon-button {
-      width: 100px;
-      height: 100px;
-    }
-    .icon-button i {
-      font-size: 32px;
-    }
+    .icon-button { width: 100px; height: 100px; }
+    .icon-button i { font-size: 32px; }
   }
 
-   @media (max-width: 768px) {
-  .app-grid {
-    grid-template-columns: repeat(3, 1fr); /* toujours 3 colonnes */
-    gap: 8px;
-    padding: 5px;
+  @media (max-width: 768px) {
+    .app-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 5px; }
+    .icon-button { width: 100%; height: 90px; }
+    .icon-button i { font-size: 28px; }
+    .icon-button span { font-size: 12px; }
   }
 
-  .icon-button {
-    width: 100%;   /* bouton prend la largeur de sa cellule */
-    height: 90px;  /* réduit en hauteur */
-  }
-
-  .icon-button i {
-    font-size: 28px;
-  }
-
-  .icon-button span {
-    font-size: 12px;
-  }
-}
-
-  
-  /* Titres uniquement dans la page Fiche identité */
+  /* Titres page Fiche identité */
   #ficheIdentitePage h2 {
     background-color: #003366 !important;
     color: white !important;
@@ -383,80 +300,45 @@
     margin-top: 20px;
   }
 
-  #ficheIdentitePage .red {
-    background-color: #e74c3c;
-    color: white;
+  #ficheIdentitePage .red { background-color: #e74c3c; color: white; }
+  #ficheIdentitePage .red:hover { background-color: #c0392b; }
+  #ficheIdentitePage .green { background-color: #27ae60; color: white; }
+  #ficheIdentitePage .green:hover { background-color: #229954; }
+  #ficheIdentitePage .blue { background-color: #3498db; color: white; }
+  #ficheIdentitePage .blue:hover { background-color: #2980b9; }
+
+  /* Page Informations resserrée */
+  #infosPage .flex-col {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
   }
-  #ficheIdentitePage .red:hover {
-    background-color: #c0392b;
+
+  #infosPage .flex-col label {
+    min-width: 90px;
+    margin: 0 0 2px 0;
+    font-size: 0.9em;
   }
 
-  #ficheIdentitePage .green {
-    background-color: #27ae60;
-    color: white;
+  #infosPage .flex-col input,
+  #infosPage .flex-col select {
+    flex: 1;
+    max-width: 200px;
+    padding: 5px 8px;
+    margin-bottom: 0;
   }
-  #ficheIdentitePage .green:hover {
-    background-color: #229954;
+
+  #infosPage input,
+  #infosPage select {
+    background-color: #ffffff;
+    color: #2c3e50;
+    border: 2px solid #3498db;
+    border-radius: 6px;
+    font-size: 0.95em;
+    box-sizing: border-box;
   }
-
-  #ficheIdentitePage .blue {
-    background-color: #3498db;
-    color: white;
-  }
-  #ficheIdentitePage .blue:hover {
-    background-color: #2980b9;
-  }
-  /* Mise en forme spécifique à la page Informations + resserrement */
-#infosPage .flex-col {
-  display: flex;
-  flex-direction: row;     /* label + input sur une seule ligne */
-  align-items: center;
-  gap: 6px;                /* réduit l’espace entre label et input */
-  margin-bottom: 4px;      /* réduit fortement l’espace vertical */
-}
-
-#infosPage .flex-col label {
-  min-width: 90px;         /* un peu plus compact */
-  margin: 0 0 2px 0;       /* colle mieux le label */
-  font-size: 0.9em;        /* texte plus compact */
-}
-
-#infosPage .flex-col input,
-#infosPage .flex-col select {
-  flex: 1;
-  max-width: 200px;
-  padding: 5px 8px;        /* champs plus petits */
-  margin-bottom: 0;        /* pas de marge supplémentaire */
-}
-
-/* Champs généraux (conserve ton style visuel mais compact) */
-#infosPage input,
-#infosPage select {
-  background-color: #ffffff;
-  color: #2c3e50;
-  border: 2px solid #3498db;
-  border-radius: 6px;
-  font-size: 0.95em;
-  box-sizing: border-box;
-}
-#homePage .home-title {
-  position: relative;
-  left: -20px;                /* décale sans créer de dépassement */
-  width: calc(100% + 40px);   /* reprend toute la largeur */
-  padding: 20px;
-  background: #003366;
-  color: white;
-  font-size: 1.5em;
-  text-align: center;
-}
-
-#homePage .home-title .sous-titre {
-  font-size: 0.6em;
-  font-weight: normal;
-  display: block;
-  margin-top: 8px;
-}
-
 </style>
 
 <script src="https://unpkg.com/html5-qrcode"></script>
