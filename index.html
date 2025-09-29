@@ -440,21 +440,20 @@
   box-sizing: border-box;
 }
 #homePage .home-title {
-  margin: -20px -20px 30px -20px; /* colle en haut et compense le padding */
+  position: relative;
+  left: -20px;                /* décale sans créer de dépassement */
+  width: calc(100% + 40px);   /* reprend toute la largeur */
   padding: 20px;
   background: #003366;
   color: white;
   font-size: 1.5em;
-  text-align: center;        /* centre horizontalement */
-  display: flex;             /* active flexbox */
-  flex-direction: column;    /* empile titre + sous-titre */
-  align-items: center;       /* centre horizontalement en flex */
-  justify-content: center;   /* centre verticalement */
+  text-align: center;
 }
 
 #homePage .home-title .sous-titre {
   font-size: 0.6em;
   font-weight: normal;
+  display: block;
   margin-top: 8px;
 }
 
