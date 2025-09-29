@@ -420,6 +420,19 @@
   flex: 1;                  /* le champ s’adapte à la largeur dispo */
   max-width: 200px;         /* optionnel, pour éviter trop large */
 }
+/* Amélioration de visibilité des champs dans la page Informations */
+#infosPage input,
+#infosPage select {
+  background-color: #ffffff;     /* fond bien blanc */
+  color: #2c3e50;                /* texte foncé lisible */
+  border: 2px solid #3498db;     /* bordure bleue */
+  border-radius: 6px;            /* coins arrondis */
+  padding: 8px 10px;             /* un peu de confort */
+  font-size: 1em;
+  width: 100%;                   /* occupe la largeur dispo */
+  max-width: 300px;              /* mais pas trop large */
+  box-sizing: border-box;
+}
 </style>
 
 <script src="https://unpkg.com/html5-qrcode"></script>
