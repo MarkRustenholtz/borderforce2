@@ -358,6 +358,53 @@ html, body {
   padding: 0;
   box-sizing: border-box;
 }
+
+/* On cache le radio natif */
+#pulsarPage input[type="radio"] {
+  display: none;
+}
+
+/* Style de base des boutons */
+#pulsarPage label {
+  display: inline-block;
+  margin: 15px;
+  cursor: pointer;
+}
+
+#pulsarPage label span {
+  display: inline-block;
+  padding: 20px 50px;
+  border: 2px solid #ccc;
+  border-radius: 14px;
+  font-size: 1.6em;
+  font-weight: bold;
+  background: #f9f9f9;
+  color: #333;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+}
+
+/* Effet hover */
+#pulsarPage label span:hover {
+  background: #eee;
+}
+
+/* ✅ Bouton Oui sélectionné */
+#pulsarPage input[type="radio"]:checked + span.yes {
+  background: #2ecc71;    /* vert */
+  color: #fff;
+  border-color: #27ae60;
+}
+
+/* ❌ Bouton Non sélectionné */
+#pulsarPage input[type="radio"]:checked + span.no {
+  background: #e74c3c;    /* rouge */
+  color: #fff;
+  border-color: #c0392b;
+}
+
+
+
 </style>
 
 <script src="https://unpkg.com/html5-qrcode"></script>
@@ -803,15 +850,18 @@ html, body {
     <div class="page-title">PULSAR</div>
   </div>
   <div class="page-content">
-    <div style="text-align: center; margin-top: 50px;">
-      <label style="display: block; margin: 20px 0; font-size: 1.2em;">
-        <input type="radio" name="pulsar" id="pulsarOui" onclick="onPulsarChange()" style="margin-right: 10px;"> Oui
-      </label>
-      <label style="display: block; margin: 20px 0; font-size: 1.2em;">
-        <input type="radio" name="pulsar" id="pulsarNon" onclick="onPulsarChange()" style="margin-right: 10px;"> Non
-      </label>
-    </div>
+  <div style="text-align: center; margin-top: 50px;">
+    <label>
+      <input type="radio" name="pulsar" id="pulsarOui" onclick="onPulsarChange()">
+      <span class="yes">OUI</span>
+    </label>
+
+    <label>
+      <input type="radio" name="pulsar" id="pulsarNon" onclick="onPulsarChange()">
+      <span class="no">NON</span>
+    </label>
   </div>
+</div>
 </div>
 
 <!-- Page Fiche identité (intégration ESI+Visa - partie Fiche) -->
