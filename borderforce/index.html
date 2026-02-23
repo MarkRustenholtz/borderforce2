@@ -3893,6 +3893,36 @@ function fillFieldsFromMrz(fields) {
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/mrz@3/dist/mrz.umd.js"></script>
+<!-- Solution robuste pour MRZ -->
+<script>
+// Attendre que la page soit complètement chargée
+window.addEventListener('load', function() {
+  // Vérifier si mrz est déjà défini (cas normal)
+  if (typeof mrz === 'undefined') {
+    console.warn('MRZ non trouvé, chargement manuel...');
+    
+    // Créer une balise script pour charger la bibliothèque
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mrz@3/dist/mrz.umd.js';
+    script.onload = function() {
+      console.log('✅ MRZ chargé avec succès !');
+      // Ici, vous pouvez réactiver les boutons si nécessaire
+    };
+    script.onerror = function() {
+      console.error('❌ Échec du chargement MRZ');
+      alert('Erreur de chargement de la bibliothèque MRZ. Vérifiez votre connexion.');
+    };
+    document.body.appendChild(script);
+  } else {
+    console.log('✅ MRZ déjà disponible');
+  }
+});
 
+// Version de secours : si même après cela la fonction parseMRZ échoue,
+// on redéfinit une version simplifiée
+window.parseMRZ = window.parseMRZ || function() {
+  alert('Bibliothèque MRZ non disponible. Utilisez la saisie manuelle ou "Nettoyer MRZ".');
+};
+</script>
 </body>
 </html>
