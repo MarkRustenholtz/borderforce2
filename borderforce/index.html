@@ -3578,6 +3578,7 @@ function cleanMrzText(){
 
 {line:2,start:0,end:30,label:"name",parse:r},{line:2,start:0,end:30,label:"surname",parse:function(t){return t.split("<<")[0].replace(/</g," ").trim()}},{line:2,start:0,end:30,label:"givenNames",parse:function(t){var n=t.split("<<");return n.length>1?n[1].replace(/</g," ").trim():""}}]}];t.formats=f;var s=f;t.MRZ_FORMATS=s;var d=s;t.MRZ_FIELDS=d;function g(t){if(!t)return"<";t=t.replace(/</g,"0");for(var n=[7,3,1],r=0,o=0;o<t.length;o++){var a=parseInt(t[o],10);if(isNaN(a))return"<";r+=a*n[o%3]}return r%10+""}function p(t){if(!t)return"<";for(var n=0,r=0;r<t.length;r++){var o=t[r];if("<"===o)continue;var a=o.charCodeAt(0)-65;n=10*n+a}return n%10+""}function h(t){if(!t)return"<";t=t.replace(/</g,"0");for(var n=[7,3,1],r=0,o=0;o<t.length;o++){var a=parseInt(t[o],10);if(isNaN(a))return"<";r+=a*n[o%3]}return r%10+""}t.formatDocumentNumberCheckDigit=p,t.formatBirthDateCheckDigit=h,Object.defineProperty(t,"__esModule",{value:!0})});
 </script>
+<script>
 // ==================== AJOUT SCANNER MRZ ====================
 let mrzStream = null;
 let mrzScannerActive = false;
